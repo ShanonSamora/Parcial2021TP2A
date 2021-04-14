@@ -3,13 +3,15 @@
  * solo los numeros pares y solo numeros impares respectivamente
  */
 
-const even = function(numbers){
+ const even = function(numbers) {
+    let evenNumbers = numbers.filter(num => num % 2 === 0);
+    return evenNumbers;
+  }
   
-}
-
-const odd = function(numbers){
- 
-}
+  const odd = function(numbers){
+    let oddNumbers = numbers.filter(num => Math.abs(num % 2) == 1);
+    return oddNumbers;
+  }
 
 // TESTS (no modificar)
 const arrEqual = (a1,a2) => JSON.stringify(a1) == JSON.stringify(a2);

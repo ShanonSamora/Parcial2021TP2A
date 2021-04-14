@@ -14,8 +14,25 @@
     pants: 5,
   }
 
+  const COD_SUCCESSFUL_SALE = 200;
+  const COD_UNSUCCESSFUL_SALE = 500;
+
 const sale = function (article, cant){
+  let cod=0;
   
+  for (const art in inventory) {
+    if(art === article) {
+      if(inventory[article] >= cant) {
+        cod = COD_SUCCESSFUL_SALE
+        inventory[article] = inventory[article] - cant;
+        break;
+      } else {
+        cod = COD_UNSUCCESSFUL_SALE;
+        break;
+      }
+    }
+  }
+  return cod;
 }
 
 // TESTS (no modificar)

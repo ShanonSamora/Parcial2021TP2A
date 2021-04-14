@@ -18,15 +18,18 @@
   /**
    * Función que agrega descubrimientos en el array de inventors
    * @param {*} inventor 
-   * @param {*} discoveries 
+   * @param {*} discoveriesToAdd //lo modifique para que no tenga el mismo nombre que la propiedad
    * @param {*} inventors 
    */
-  function addDiscoveries(inventor, discoveries, inventors){
-      
+  function addDiscoveries(inventor, discoveriesToAdd, inventors){
+      inventors.map(invtr => {
+        if (invtr.last === inventor) {
+          invtr.discoveries = discoveriesToAdd;
+        }
+      })
+      return inventors;
   }
 
-  console.log(addDescubrimientos('Einstein', 
+  console.log(addDiscoveries('Einstein', 
   ['Teoría de la relatividad especial','Equivalencia entre masa y energía','Teoría de la relatividad general'], inventors
   ));
-
-  

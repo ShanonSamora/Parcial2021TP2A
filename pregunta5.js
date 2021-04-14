@@ -20,3 +20,22 @@ const beers = [
     { name: 'Stolen Fruit', abv: 4.6, label: 'https://s3.amazonaws.com/brewerydbapi/beer/YGT30k/upload_uVCHP7-large.png', type: 'Wheat' },
 ];
 
+const NEW_URL_REPOSITORY = 'https://tecnoshare.sharepoint.com/sites/beer/';
+const OLD_URL_REPOSITORY = 'https://s3.amazonaws.com/brewerydbapi/beer/';
+
+const updateLabelToAllElements = function(array) {
+  array.forEach(elemento => {
+    elemento.label = elemento.label.split(OLD_URL_REPOSITORY).pop();
+    elemento.label = elemento.label.replace(/^/, NEW_URL_REPOSITORY);
+
+    elemento.label = elemento.label.split(NEW_URL_REPOSITORY).pop();
+    elemento.label = elemento.label.split('/')[0];
+
+    let newFileName = elemento.name.replace(/ /g,'');
+    elemento.label = elemento.label.concat('/' + newFileName + '.png');
+    elemento.label = NEW_URL_REPOSITORY + elemento.label;
+  })
+  return array;
+}
+
+console.log(updateLabelToAllElements(beers));
